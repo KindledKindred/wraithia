@@ -5,10 +5,14 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
 	name: "WrInitializeData",
 
 	methods: {
+		...mapActions(["users/seed", "conversations/seed"]),
+
 		init() {
 			this.$store.dispatch("users/seed");
 			this.$store.dispatch("conversations/seed");

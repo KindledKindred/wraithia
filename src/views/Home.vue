@@ -1,6 +1,6 @@
 <template lang="pug">
 	v-app
-		WrInitialize
+		WrInitializeData
 		WrConversationContainer(
 			v-for="id in convoIds"
 			:conversation="conversations[id]"
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import WrInitialize from "@/components/Molecules/WrInitialize";
+import WrInitializeData from "@/components/Molecules/WrInitializeData";
 import WrConversationContainer from "@/components/Organisms/WrConversationContainer";
 import { mapState } from "vuex";
 
@@ -18,7 +18,7 @@ export default {
 	name: "Home",
 
 	components: {
-		WrInitialize,
+		WrInitializeData,
 		WrConversationContainer
 	},
 
