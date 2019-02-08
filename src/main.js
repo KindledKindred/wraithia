@@ -1,9 +1,10 @@
-import Vue from "vue";
+import Vue from "vue"
 import './plugins/vuetify'
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import firebase from "firebase";
+import App from "./App.vue"
+import router from "./router"
+import store from "./store"
+import firebase from "firebase"
+import "firebase/firestore"
 
 Vue.config.productionTip = false;
 
@@ -21,7 +22,7 @@ firebase.initializeApp(config);
 new Vue({
   router,
   store,
-  render: function(h) {
+  render: function (h) {
     return h(App);
   }
 }).$mount("#app");
