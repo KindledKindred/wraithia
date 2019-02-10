@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import users from '@/store/users'
-import conversations from '@/store/conversations'
 
 import Firebase from 'Firebase'
 import 'Firebase/firestore'
-import config from '../config'
+import config from '@/plugins/firebase'
 Firebase.initializeApp(config)
+
+import users from '@/store/users'
+import conversations from '@/store/conversations'
 
 Vue.use(Vuex)
 const state = {

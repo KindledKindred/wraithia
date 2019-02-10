@@ -7,6 +7,13 @@
 				:message="message"
 				:key="message.created"
 			)
+			v-form
+				v-text-field(
+					:value="newMessageText"
+					@change="v => newMessageText = v"
+					@keyup.enter="send"
+					placeholder="メッセージを入力..."
+				)
 </template>
 
 <script>

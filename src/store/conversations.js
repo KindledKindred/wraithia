@@ -35,6 +35,29 @@ const mutations = {
 }
 
 const actions = {
+	endMessage({
+		commit,
+		rootState
+	}, {
+		text,
+		created,
+		sender,
+		conversationId
+	}) {
+		const convoRef = rootState.db.collection('conversations').doc(conversationId)
+
+		convoRef.update({
+				messages: [...state.all[conversationId].messages, {
+					id: uuidv4(),
+					created,
+					sender,
+					text
+				}]
+			})
+			.then(res => console.log('Message sent.'))
+			.catch(err => console.log('Error', err))
+	},
+
 	seed({
 		rootState
 	}) {
@@ -72,28 +95,6 @@ const actions = {
 		convos.forEach(conversation => commit('SET_CONVERSATION', {
 			conversation
 		}))
-	},
-
-	sendMessage({
-		commit,
-		rootState
-	}, {
-		text,
-		created,
-		sender,
-		conversationId
-	}) {
-		const convoRef = rootState.db.collection('conversations').doc(conversationId)
-		convoRef.update({
-				messages: [...state.all[conversationId].messages, {
-					id: uuidv4(),
-					created,
-					sender,
-					text
-				}]
-			})
-			.then(res => console.log('Message sent.'))
-			.catch(err => console.log('Error', err))
 	}
 }
 
